@@ -371,6 +371,11 @@
               templateUrl:'views/diario.html',
               resolve: resolveParams
             })
+            .when('/nova', {
+              controller:'NovaHistoriaController as Nova',
+              templateUrl:'views/nova.html',
+              resolve: resolveParams
+            })
             .otherwise({
               redirectTo:'/'
             });
@@ -389,7 +394,7 @@
         });
     }
 
-    
+
      lsjQuery(document).ready(function() { if(typeof lsjQuery.fn.layerSlider == "undefined") { lsShowNotice('layerslider_1','jquery'); } else { lsjQuery("#layerslider_4").layerSlider({responsiveUnder: 1170, layersContainer: 1170, skinsPath: 'js/layerslider/skins/'}) } });
         
         Lulu.todos = [
@@ -420,6 +425,11 @@
       .controller('DiarioController', function() {
         alert("diario");
         var Diario = this;
+       
+      })
+       .controller('NovaHistoriaController', function() {
+
+        var Nova = this;
        
       });
 
