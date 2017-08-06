@@ -67,6 +67,16 @@
    var pos = 80;
 
    var nome_carta = "image";
+   var nome_carta =  paper.image('images/mic.jpg',40, pos,80,80).attr({
+            fill: 'green',
+            stroke: 'none',
+            opacity: 1
+        });
+   nome_carta.id='girl';
+   nome_carta.drag(move, start, up);
+   pos = pos+80;
+
+   var nome_carta = "image";
    var nome_carta =  paper.image('images/lulu.png',40, pos,160,160).attr({
             fill: 'green',
             stroke: 'none',
