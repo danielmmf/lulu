@@ -378,6 +378,11 @@
               templateUrl:'views/nova.html',
               resolve: resolveParams
             })
+            .when('/montar/:cenario', {
+              controller:'MontarController as montar',
+              templateUrl:'views/montar.html',
+              resolve: resolveParams
+            })
             .otherwise({
               redirectTo:'/'
             });
