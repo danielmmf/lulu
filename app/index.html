@@ -31,73 +31,7 @@
 <link href='http://fonts.googleapis.com/css?family=Bubblegum+Sans' rel='stylesheet' type='text/css'>
 <!--jquery-->
 <script src="js/modernizr-2.6.2.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
-<script type="text/javascript">
-    angular.module('todoApp', ['ngRoute'])
-    .config(function($routeProvider) {
-          var resolveParams = {
-            params: function () {
-              return 'params';
-            }
-          };
-         
-          $routeProvider
-            .when('/', {
-              controller:'LuluController as Lulu',
-              templateUrl:'views/home.html'
-            })
-            .when('/edit/:projectId', {
-              controller:'EditProjectController as editProject',
-              templateUrl:'detail.html',
-              resolve: resolveParams
-            })
-            .when('/diario', {
-              controller:'DiarioController as Diario',
-              templateUrl:'views/diario.html',
-              resolve: resolveParams
-            })
-            .otherwise({
-              redirectTo:'/'
-            });
-        })
-      .controller('LuluController', function() {
-        alert("home");
-        var Lulu = this;
-        Lulu.todos = [
-          {text:'learn AngularJS', done:true},
-          {text:'build an AngularJS app', done:false}];
-     
-        Lulu.addTodo = function() {
-          Lulu.todos.push({text:Lulu.todoText, done:false});
-          Lulu.todoText = '';
-        };
-     
-        Lulu.remaining = function() {
-          var count = 0;
-          angular.forEach(Lulu.todos, function(todo) {
-            count += todo.done ? 0 : 1;
-          });
-          return count;
-        };
-     
-        Lulu.archive = function() {
-          var oldTodos = Lulu.todos;
-          Lulu.todos = [];
-          angular.forEach(oldTodos, function(todo) {
-            if (!todo.done) Lulu.todos.push(todo);
-          });
-        };
-      })
-      .controller('DiarioController', function() {
-        alert("diario");
-        var Diario = this;
-       
-      });
 
-
-</script>
 </head>
 <body class="main">
 	<!--wrapper starts-->
@@ -410,7 +344,88 @@
     <script type='text/javascript' src="js/greensock.js"></script> 
     <script type='text/javascript' src="js/layerslider.transitions.js"></script> 
     <!--<script type="text/javascript">var lsjQuery = jQuery;</script>--> 
-    <script type="text/javascript">var lsjQuery = jQuery;</script><script type="text/javascript"> lsjQuery(document).ready(function() { if(typeof lsjQuery.fn.layerSlider == "undefined") { lsShowNotice('layerslider_1','jquery'); } else { lsjQuery("#layerslider_4").layerSlider({responsiveUnder: 1170, layersContainer: 1170, skinsPath: 'js/layerslider/skins/'}) } }); </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+<script type="text/javascript">
+    angular.module('todoApp', ['ngRoute'])
+    .config(function($routeProvider) {
+          var resolveParams = {
+            params: function () {
+              return 'params';
+            }
+          };
+         
+          $routeProvider
+            .when('/', {
+              controller:'LuluController as Lulu',
+              templateUrl:'views/home.html'
+            })
+            .when('/edit/:projectId', {
+              controller:'EditProjectController as editProject',
+              templateUrl:'detail.html',
+              resolve: resolveParams
+            })
+            .when('/diario', {
+              controller:'DiarioController as Diario',
+              templateUrl:'views/diario.html',
+              resolve: resolveParams
+            })
+            .otherwise({
+              redirectTo:'/'
+            });
+        })
+      .controller('LuluController', function() {
+        var Lulu = this;
+
+
+    var lsjQuery = jQuery;
+
+
+         //GALLERY SLIDESHOW...
+    if(jQuery(".add-slider, .portfolio-slider, .about-slider").length) {
+        jQuery('.add-slider, .portfolio-slider, .about-slider').bxSlider({
+            auto:false, video:false, useCSS:false, pager:'true', autoHover:true, adaptiveHeight:true
+        });
+    }
+
+    
+     lsjQuery(document).ready(function() { if(typeof lsjQuery.fn.layerSlider == "undefined") { lsShowNotice('layerslider_1','jquery'); } else { lsjQuery("#layerslider_4").layerSlider({responsiveUnder: 1170, layersContainer: 1170, skinsPath: 'js/layerslider/skins/'}) } });
+        
+        Lulu.todos = [
+          {text:'learn AngularJS', done:true},
+          {text:'build an AngularJS app', done:false}];
+     
+        Lulu.addTodo = function() {
+          Lulu.todos.push({text:Lulu.todoText, done:false});
+          Lulu.todoText = '';
+        };
+     
+        Lulu.remaining = function() {
+          var count = 0;
+          angular.forEach(Lulu.todos, function(todo) {
+            count += todo.done ? 0 : 1;
+          });
+          return count;
+        };
+     
+        Lulu.archive = function() {
+          var oldTodos = Lulu.todos;
+          Lulu.todos = [];
+          angular.forEach(oldTodos, function(todo) {
+            if (!todo.done) Lulu.todos.push(todo);
+          });
+        };
+      })
+      .controller('DiarioController', function() {
+        alert("diario");
+        var Diario = this;
+       
+      });
+
+
+</script>
+
     
 </body>
 </html>
